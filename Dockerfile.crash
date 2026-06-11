@@ -1,0 +1,16 @@
+FROM python:3.10
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /bot
+
+COPY ./pzad/requirements.txt /bot/pzad/requirements.txt
+
+RUN pip install --no-cache-dir -r /bot/pzad/requirements.txt
+
+COPY ./pzad /bot/pzad
+
+EXPOSE 8081
+
+CMD ["python3", "pzad/tgbot.py"]
